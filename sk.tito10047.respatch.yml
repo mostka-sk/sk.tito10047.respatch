@@ -40,4 +40,4 @@ modules:
           - type: git
             url: https://github.com/respatch/respatch-gnome.git
             tag: v0.1.0-beta
-            commit: e0e5632a039b0a42ae40ad206bc2b0ecc2f3758e
+            commit: ffcfe4d9e166bc3646ec11cd2abb9c0361ec6cb3
