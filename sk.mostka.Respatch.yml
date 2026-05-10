@@ -7,13 +7,15 @@ sdk-extensions:
 command: respatch
 separate-locales: false
 finish-args:
-  - --share=network
-  - --share=ipc
-  - --socket=fallback-x11
-  - --socket=wayland
-  - --device=dri
-  - --talk-name=org.freedesktop.Notifications
-
+    - --share=network
+    - --share=ipc
+    - --socket=fallback-x11
+    - --socket=wayland
+    - --device=dri
+    - --talk-name=org.freedesktop.Notifications
+    - --metadata=X-D-Bus-Python-Terminology-Warning=n/a
+    - --filesystem=xdg-data/respatch:create
+    - --talk-name=org.freedesktop.portal.Desktop
 modules:
   # 1. Blueprint Compiler
   - name: blueprint-compiler
@@ -69,6 +71,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/mostka-sk/respatch-gnome.git
-        tag: v1.0.0
-        commit: dd6c1d9fdb6dbc2a95a56f89c365b0ce25eb32c5
+        tag: v1.0.1
+        commit: acef7ea5a2bbf8e8f9f391f52c0ee53f3f727c58
       - generated-sources.json
+cleanup:
+  - /bin/esbuild
+  - /bin/blueprint-compiler
+  - /share/licenses/sk.mostka.Respatch/esbuild
+  - /share/licenses/sk.mostka.Respatch/blueprint-compiler
