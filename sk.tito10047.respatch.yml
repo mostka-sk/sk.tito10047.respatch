@@ -3,6 +3,7 @@ runtime: org.gnome.Platform
 runtime-version: '46'
 sdk: org.gnome.Sdk
 command: respatch
+separate-locales: false
 finish-args:
     - --share=network
     - --share=ipc
@@ -12,9 +13,31 @@ finish-args:
     - --talk-name=org.freedesktop.Notifications
 
 modules:
+    # 1. Blueprint Compiler
+    - name: blueprint-compiler
+      buildsystem: meson
+      sources:
+          - type: git
+            url: https://gitlab.gnome.org/jwestman/blueprint-compiler.git
+            tag: v0.14.0
+            commit: 8e10fcf8692108b9d4ab78f41086c5d7773ef864
+
+    # 2. esbuild (precompiled binary for linux-x64)
+    - name: esbuild
+      buildsystem: simple
+      sources:
+          - type: file
+            url: https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.21.1.tgz
+            sha256: e73bfdec6c266532abb24a9019586b4d13cf6bc7e0b79a6aff22b919687d9a45
+      build-commands:
+          - tar -xf linux-x64-0.21.1.tgz
+          - install -D package/bin/esbuild /app/bin/esbuild
+
+    # 3. Samotná aplikácia
     - name: respatch
       buildsystem: meson
       sources:
           - type: git
             url: https://github.com/respatch/respatch-gnome.git
             tag: v0.1.0-beta
+            commit: e0e5632a039b0a42ae40ad206bc2b0ecc2f3758e
