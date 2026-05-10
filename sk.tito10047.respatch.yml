@@ -1,0 +1,20 @@
+app-id: sk.tito10047.respatch
+runtime: org.gnome.Platform
+runtime-version: '46'
+sdk: org.gnome.Sdk
+command: respatch
+finish-args:
+    - --share=network
+    - --share=ipc
+    - --socket=fallback-x11
+    - --socket=wayland
+    - --device=dri
+    - --talk-name=org.freedesktop.Notifications
+
+modules:
+    - name: respatch
+      buildsystem: meson
+      sources:
+          - type: git
+            url: https://github.com/respatch/respatch-gnome.git
+            tag: v0.1.0-beta
