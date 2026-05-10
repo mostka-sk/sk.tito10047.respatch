@@ -1,6 +1,6 @@
 app-id: sk.mostka.Respatch
 runtime: org.gnome.Platform
-runtime-version: '47'
+runtime-version: '50'
 sdk: org.gnome.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.golang
@@ -23,8 +23,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.gnome.org/jwestman/blueprint-compiler.git
-        tag: v0.14.0
-        commit: 8e10fcf8692108b9d4ab78f41086c5d7773ef864
+        tag: v0.20.4
+        commit: 31b62c24a72c1670d2d93dcdf2d130f1ae12778e
 
   # 2. esbuild (built from Go source)
   - name: esbuild
@@ -70,5 +70,5 @@ modules:
       - type: git
         url: https://github.com/mostka-sk/respatch-gnome.git
         tag: v1.0.0
-        commit: 884dfeaed9c328d0a55504dea84fd1e59738872b
+        commit: dd6c1d9fdb6dbc2a95a56f89c365b0ce25eb32c5
       - generated-sources.json
